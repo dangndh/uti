@@ -5,6 +5,27 @@ class Uti
     /**
     * Leverages Vietnam Co., Ltd
     * @author           Nguyen Duong Hai Dang
+    * @date created     2013 - 12 - 18
+    * check if IP address exists in a network
+    */
+    public static function IPvsCIDR($user_ip, $cidr) 
+    {
+        $parts = explode('/', $cidr);
+        $ipc = explode('.', $parts[0]);
+        foreach ($ipc as &$v)
+            $v = str_pad(decbin($v), 8, '0', STR_PAD_LEFT);
+        $ipc = substr(join('', $ipc), 0, $parts[1]);
+        $ipu = explode('.', $user_ip);
+        foreach ($ipu as &$v)
+            $v = str_pad(decbin($v), 8, '0', STR_PAD_LEFT);
+        $ipu = substr(join('', $ipu), 0, $parts[1]);
+        return $ipu == $ipc;
+    }
+
+
+    /**
+    * Leverages Vietnam Co., Ltd
+    * @author           Nguyen Duong Hai Dang
     * @date created     2013 - 10 - 16
     * 
     */
