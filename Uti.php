@@ -1,7 +1,19 @@
 <?php
 class Uti
 {
-
+	/**
+    * @author   Nguyen Duong Hai Dang
+    * @since    May 08th 2015
+    * Calculate number of days in different between two dates
+    */
+    public static function numberDaysDiff($date1, $date2)
+    {
+        $tsDate1 = strtotime($date1);
+        $tsDate2 = strtotime($date2);
+        $datediff = $tsDate2 - $tsDate1;
+        return intval(floor($datediff / ( 60 * 60 * 24 )));
+    }
+	
     /**
     * Leverages Vietnam Co., Ltd
     * @author           Nguyen Duong Hai Dang
